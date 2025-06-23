@@ -3,9 +3,6 @@ services:
     name: flask-wb-ozon-transfer
     env: python
     buildCommand: ""
-    startCommand: gunicorn app:app
+    startCommand: python app.py
     plan: free
     autoDeploy: true
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11
