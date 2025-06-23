@@ -63,3 +63,7 @@ def run_pipeline(xlsx_path):
 
         with open(Path(RESULTS_FOLDER) / f"ozon_result_{task}.json", "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
