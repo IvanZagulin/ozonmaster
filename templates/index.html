@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Импорт карточек Wildberries → Ozon</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2em auto;
+    }
+    h1 { font-size: 1.5em; }
+    input[type="file"] {
+      display: block;
+      margin-bottom: 1em;
+    }
+    .button {
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .results a {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Импорт Excel-файла с артикулами</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xlsx" required>
+    <button class="button" type="submit">Запустить импорт</button>
+  </form>
+
+  <h2>Результаты обработки:</h2>
+  <div class="results">
+    {% for log in logs %}
+      <a href="{{ url_for('download_result', filename=log.name) }}" target="_blank">{{ log.name }}</a>
+    {% endfor %}
+  </div>
+</body>
+</html>
